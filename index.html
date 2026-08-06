@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
+  <title>ERP Version 13</title>
+  <script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore-compat.js"></script>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="authView" class="auth-view"></div>
+  <div id="appRoot" class="app">
+    <header class="topbar">
+      <div>
+        <div class="brand">ERP</div>
+        <div class="sub" id="subTitle">Dashboard</div>
+      </div>
+      <div class="datebox">
+        <label>Date</label>
+        <input type="date" id="datePicker" />
+      </div>
+      <div class="userbox" id="userBox"></div>
+    </header>
+
+    <main class="content">
+      <section id="view-dashboard" class="view active"></section>
+      <section id="view-purchase" class="view"></section>
+      <section id="view-production" class="view"></section>
+      <section id="view-packaging" class="view"></section>
+      <section id="view-sale" class="view"></section>
+      <section id="view-more" class="view"></section>
+    </main>
+
+    <nav class="bottom-nav">
+      <button data-go="dashboard" class="active">Dashboard</button>
+      <button data-go="purchase">Purchase</button>
+      <button data-go="production">Production</button>
+      <button data-go="packaging">Packaging</button>
+      <button data-go="sale">Sale</button>
+      <button data-go="more">More</button>
+    </nav>
+  </div>
+
+  <div id="toast" class="toast"></div>
+  <script src="app.js"></script>
+</body>
+</html>

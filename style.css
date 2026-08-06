@@ -1,0 +1,163 @@
+:root{
+  --bg:#0f172a;
+  --panel:#111827;
+  --card:#1f2937;
+  --muted:#94a3b8;
+  --text:#e5e7eb;
+  --accent:#38bdf8;
+  --good:#22c55e;
+  --danger:#ef4444;
+  --line:#334155;
+  --shadow:0 10px 30px rgba(0,0,0,.25);
+  --radius:18px;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+}
+*{box-sizing:border-box}
+body{margin:0;background:linear-gradient(180deg,#0b1020,#111827 30%,#0f172a);color:var(--text);min-height:100vh}
+button,input,select,textarea{font:inherit}
+.app{min-height:100vh;padding-bottom:84px;width:100%}
+.topbar{
+  position:sticky;top:0;z-index:5;
+  display:flex;justify-content:space-between;align-items:flex-end;gap:12px;
+  padding:14px 14px 10px;background:rgba(15,23,42,.92);backdrop-filter:blur(10px);border-bottom:1px solid rgba(148,163,184,.18)
+}
+.brand{font-size:1.25rem;font-weight:800}
+.sub{color:var(--muted);font-size:.88rem;margin-top:2px}
+.datebox{display:flex;flex-direction:column;gap:4px;align-items:flex-end}
+.datebox label{font-size:.72rem;color:var(--muted)}
+.datebox input{background:#0b1220;color:var(--text);border:1px solid var(--line);border-radius:12px;padding:8px 10px}
+.content{padding:0 0 92px;width:100%}
+.view{display:none}
+.view.active{display:block}
+.panel{
+  background:rgba(17,24,39,.92);border:1px solid rgba(148,163,184,.12);
+  border-radius:0;box-shadow:var(--shadow);padding:10px;margin-bottom:8px
+}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.card{background:rgba(31,41,55,.8);border:1px solid rgba(148,163,184,.12);border-radius:16px;padding:12px}
+.kpi .v{font-size:1.25rem;font-weight:800;margin-top:6px}
+.kpi .l{font-size:.8rem;color:var(--muted)}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.space{justify-content:space-between}
+.muted{color:var(--muted)}
+.small{font-size:.8rem}
+input,select,textarea{
+  width:100%;background:#0b1220;color:var(--text);border:1px solid var(--line);border-radius:12px;padding:10px
+}
+textarea{min-height:72px;resize:vertical}
+.btn{
+  background:var(--accent);color:#00111a;border:0;border-radius:12px;padding:10px 14px;font-weight:700
+}
+.btn.secondary{background:#334155;color:var(--text)}
+.btn.good{background:var(--good);color:#052e16}
+.btn.danger{background:var(--danger);color:#fff}
+.stack{display:grid;gap:10px}
+.list{display:grid;gap:8px}
+.tblwrap{overflow:auto;border-radius:0;border:1px solid rgba(148,163,184,.12);width:100%}
+table{width:100%;min-width:100%;border-collapse:collapse;background:rgba(15,23,42,.45)}
+th,td{border-bottom:1px solid rgba(148,163,184,.12);padding:7px;vertical-align:top;text-align:left;min-width:72px;font-size:.92rem}
+th{position:sticky;top:0;background:#0f172a;z-index:1}
+th:first-child,td:first-child{position:sticky;left:0;background:#0f172a;z-index:2;min-width:170px}
+td input,td select,td textarea{padding:6px 8px;border-radius:10px}
+td textarea{min-height:46px}
+.sectionhead{display:flex;justify-content:space-between;align-items:center;margin:4px 0 10px;gap:8px}
+.bottom-nav{
+  position:fixed;left:0;right:0;bottom:0;z-index:10;
+  display:grid;grid-template-columns:repeat(6,1fr);gap:4px;padding:8px;
+  background:rgba(15,23,42,.96);border-top:1px solid rgba(148,163,184,.15)
+}
+.bottom-nav button{
+  border:0;background:transparent;color:var(--muted);padding:8px 3px;border-radius:12px;font-size:.74rem
+}
+.bottom-nav button.active{background:#1d4ed8;color:#fff;font-weight:700}
+.pill{display:inline-flex;align-items:center;gap:6px;padding:6px 10px;background:#0b1220;border:1px solid var(--line);border-radius:999px;font-size:.8rem}
+.toast{
+  position:fixed;left:50%;bottom:92px;transform:translateX(-50%);background:#111827;color:#fff;
+  padding:10px 14px;border-radius:999px;border:1px solid rgba(148,163,184,.18);box-shadow:var(--shadow);opacity:0;pointer-events:none;transition:.2s
+}
+.toast.show{opacity:1}
+.bad{outline:2px solid #ef4444;background:rgba(239,68,68,.08) !important}
+@media (min-width:900px){ .content{max-width:none;margin:0 auto} }
+@media print{
+  .topbar,.bottom-nav,.no-print{display:none !important}
+  body{background:#fff;color:#000}
+  .panel{box-shadow:none;border:1px solid #ddd;background:#fff}
+  .tblwrap{overflow:visible}
+  th{position:static}
+}
+
+
+.auth-view{
+  position:fixed;
+  inset:0;
+  z-index:30;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:18px;
+  background:linear-gradient(180deg,#0b1020,#111827 30%,#0f172a);
+}
+.auth-card{
+  width:min(420px,100%);
+  background:rgba(17,24,39,.96);
+  border:1px solid rgba(148,163,184,.15);
+  border-radius:24px;
+  box-shadow:0 20px 50px rgba(0,0,0,.35);
+  padding:20px;
+}
+.hidden{display:none !important}
+.userbox{display:flex;align-items:center}
+.userpill{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:8px 12px;
+  border:1px solid rgba(148,163,184,.18);
+  border-radius:16px;
+  background:rgba(15,23,42,.7);
+}
+.item-name{font-size:.9rem;line-height:1.15;font-weight:700}
+.modal{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.5);
+  z-index:60;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:16px;
+}
+.modal-card{
+  width:min(560px,100%);
+  max-height:90vh;
+  overflow:auto;
+  background:rgba(17,24,39,.98);
+  color:var(--text);
+  border:1px solid rgba(148,163,184,.18);
+  border-radius:24px;
+  box-shadow:0 20px 60px rgba(0,0,0,.4);
+  padding:18px;
+}
+
+.sheet-table{background:rgba(255,255,255,.04);}
+.sheet-table th,.sheet-table td{padding:7px 8px;font-size:.92rem;min-width:72px;}
+.sheet-table th{background:#0b1220;}
+.sheet-table td input,.sheet-table td select,.sheet-table td textarea{padding:6px 8px;border-radius:10px;}
+.sheet-table .item-name{font-size:.9rem;font-weight:700;}
+
+/* v6 overrides */
+.content{padding:8px 8px 92px}
+.panel{padding:10px}
+.tblwrap{width:100%}
+.sheet-table{table-layout:auto;width:100%}
+.sheet-table th,.sheet-table td{padding:6px 7px}
+.sheet-table td input,.sheet-table td select,.sheet-table td textarea{min-width:72px}
+.bottom-nav button{font-size:.7rem}
+.topbar{gap:8px}
+
+
+/* v7 full-width layout */
+.content{padding:0 0 92px;width:100%}
+.panel{border-radius:0;margin-bottom:8px;padding:10px}
+.tblwrap{width:100%;overflow-x:auto;border-radius:0}
+.sheet-table{width:100%;min-width:100%;table-layout:auto}
